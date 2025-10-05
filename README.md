@@ -96,7 +96,7 @@ The app will display the predicted sentiment (Positive 👍 or Negative 👎) al
 
 OUTPUTS
 <img width="639" height="534" alt="image" src="https://github.com/user-attachments/assets/440234a8-b5fe-49f7-bf06-2390e0b6aadb" />
-<img width="940" height="817" alt="image" src="https://github.com/user-attachments/assets/e4179b48-b99b-408e-b5ee-524865378286" />
+<img width="639" height="534" alt="image" src="https://github.com/user-attachments/assets/e4179b48-b99b-408e-b5ee-524865378286" />
 
 
 
