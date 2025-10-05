@@ -1,103 +1,98 @@
-Movie Review Sentiment Analysis using NLP
-A machine learning project that classifies movie reviews as either positive or negative. This repository contains Python scripts to train a sentiment analysis model on the IMDB 50K Movie Review dataset and then use that model to predict the sentiment of new, unseen reviews.
+Movie Review Sentiment Analysis Web App 🎬
+This project is a web application that uses Natural Language Processing (NLP) to classify movie reviews as either positive or negative. The machine learning model is trained on the popular IMDB Dataset and is wrapped in an interactive user interface built with Streamlit.
 
-The project is structured to separate the time-consuming model training from the fast, real-time prediction, making it efficient for repeated use.
+✨ Features
+Interactive UI: A clean and user-friendly web interface to enter movie reviews for analysis.
 
-Key Features
-Sentiment Classification: Predicts if a movie review is positive or negative.
+Real-time Predictions: Instantly classifies the sentiment of the text you provide.
 
-NLP Pipeline: Implements a standard NLP preprocessing workflow including:
+Efficient Workflow: The model is trained and saved in a separate script, allowing the web app to load quickly and perform predictions on demand.
 
-HTML tag removal
+Confidence Score: Displays the model's confidence level in its prediction, giving you a better understanding of the result.
 
-Lowercasing and punctuation removal
+🛠️ Technologies Used
+Backend: Python
 
-Tokenization
+Machine Learning: Scikit-learn (Logistic Regression)
 
-Stop word removal
+NLP: NLTK (Natural Language Toolkit) for text preprocessing
 
-Lemmatization
+Web Framework: Streamlit for the interactive UI
 
-TF-IDF Vectorization: Converts text data into meaningful numerical features for the model.
+Data Manipulation: Pandas
 
-Efficient Two-Part Workflow:
+Model Serialization: Joblib
 
-A script to train and save the model (train_model.py).
+📂 Project Structure
+.
+├── sentiment_model.pkl    # Saved trained machine learning model
+├── tfidf_vectorizer.pkl   # Saved TF-IDF vectorizer
+├── IMDB Dataset.csv       # The dataset for training the model
+├── app.py                 # The main Streamlit application script
+├── download_nltk.py       # Utility script to download NLTK data
+├── requirements.txt       # A list of all required Python packages
+└── train_model.py         # Script to preprocess data and train the model
 
-A separate script to load the saved model and perform instant predictions (predict_review.py).
-
-Interactive Prediction: Allows users to input their own reviews and get immediate sentiment predictions.
-
-How It Works
-Training (train_model.py): The script first loads the IMDB dataset. It then cleans and preprocesses each review. Using the cleaned text, it creates a TF-IDF feature matrix and trains a Logistic Regression model. The trained model and the TF-IDF vectorizer are then saved to disk as .pkl files.
-
-Prediction (predict_review.py): This script loads the saved sentiment_model.pkl and tfidf_vectorizer.pkl files. It provides a command-line interface for the user to enter a new movie review. The script preprocesses the input text using the same steps as the training script, vectorizes it, and feeds it to the loaded model to get a sentiment prediction.
-
-Technologies Used
-Python 3
-
-Pandas: For data manipulation and loading the CSV dataset.
-
-NLTK (Natural Language Toolkit): For core NLP tasks like tokenization, stop word removal, and lemmatization.
-
-Scikit-learn: For machine learning, including:
-
-TfidfVectorizer for text feature extraction.
-
-LogisticRegression for the classification model.
-
-train_test_split and metrics for model evaluation.
-
-Joblib: For saving and loading the trained model.
-
-Dataset
-This project uses the IMDB 50K Movie Review Dataset. It consists of 50,000 movie reviews evenly split into 25,000 for training and 25,000 for testing, with a balanced distribution of positive and negative reviews.
-
-You must have the IMDB Dataset.csv file in the same directory as the Python scripts.
-
-Setup and Usage
-Follow these steps to run the project locally.
+🚀 Setup and Installation
+Follow these steps to set up and run the project on your local machine.
 
 1. Prerequisites
-Python 3.6 or higher
+Python 3.7+
 
-pip (Python package installer)
+Git
 
 2. Clone the Repository
-git clone [https://github.com/your-username/movie-review-sentiment-analysis.git](https://github.com/your-username/movie-review-sentiment-analysis.git)
-cd movie-review-sentiment-analysis
+Open your terminal and clone the repository to your local machine:
 
-3. Install Dependencies
-Install the required Python libraries using the requirements.txt file.
+git clone [https://github.com/your-username/your-repository-name.git](https://github.com/your-username/your-repository-name.git)
+cd your-repository-name
+
+3. Create a Virtual Environment
+It is highly recommended to use a virtual environment to manage project dependencies.
+
+# Create the virtual environment
+python -m venv venv
+
+# Activate it
+# On Windows:
+venv\Scripts\Activate.ps1
+# On macOS/Linux:
+source venv/bin/activate
+
+4. Install Dependencies
+Install all the required packages using the requirements.txt file.
 
 pip install -r requirements.txt
 
-(Note: You will need to create a requirements.txt file containing pandas, numpy, nltk, scikit-learn, and joblib).
+(Note: If you don't have a requirements.txt file yet, you can create one by running pip freeze > requirements.txt after installing the packages manually.)
 
-4. Run the Training Script
-First, you need to train the model. This only needs to be done once. Make sure IMDB Dataset.csv is in the project directory.
+5. Download NLTK Data (Run Once)
+The text preprocessing functions depend on data packages from NLTK. Run the utility script to download them.
+
+python download_nltk.py
+
+6. Train the Model (Run Once)
+You need to train the model on the IMDB Dataset.csv. This will create the sentiment_model.pkl and tfidf_vectorizer.pkl files that the app needs.
 
 python train_model.py
 
-This will preprocess the data, train the model, and create two files: sentiment_model.pkl and tfidf_vectorizer.pkl.
+This step will take a few minutes to complete as it processes all 50,000 reviews.
 
-5. Run the Prediction Script
-Once the model is trained, you can run the prediction script anytime to analyze new reviews.
+7. Launch the Streamlit App
+Once the model is trained, you can start the web application.
 
-python predict_review.py
+streamlit run app.py
 
-The script will load the saved model and prompt you to enter a review.
+Your default web browser will automatically open with the application running.
 
-Example:
+💡 How to Use
+Once the app is running, you will see a title and a text area.
 
-Enter your review: This movie was an absolute masterpiece! The acting was incredible and the plot was gripping.
-Predicted Sentiment: POSITIVE
+Type or paste any English-language movie review into the text box.
 
-File Structure
-.
-├── IMDB Dataset.csv        # The dataset file (must be provided)
-├── train_model.py          # Script to train and save the model
-├── predict_review.py       # Script to load the model and predict sentiments
-├── sentiment_model.pkl     # Generated by train_model.py
-├── tfidf_vectorizer.pkl    # Generated by train_model.py
-└── README.md
+Click the "Analyze Sentiment" button.
+
+The app will display the predicted sentiment (Positive 👍 or Negative 👎) along with the model's confidence percentage.
+
+📄 License
+This project is licensed under the MIT License. See the LICENSE file for more details.
