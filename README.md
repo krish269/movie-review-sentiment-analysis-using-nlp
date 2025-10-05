@@ -95,8 +95,9 @@ Click the "Analyze Sentiment" button.
 The app will display the predicted sentiment (Positive 👍 or Negative 👎) along with the model's confidence percentage.
 
 OUTPUTS
-<img width="639" height="534" alt="image" src="https://github.com/user-attachments/assets/440234a8-b5fe-49f7-bf06-2390e0b6aadb" />
-<img width="639" height="534" alt="image" src="https://github.com/user-attachments/assets/e4179b48-b99b-408e-b5ee-524865378286" />
+<img width="940" height="817" alt="image" src="https://github.com/user-attachments/assets/6b9afdb1-dfa7-4698-a93d-1e69acfef8e0" />
+<img width="608" height="517" alt="image" src="https://github.com/user-attachments/assets/4a9a3c0e-21cf-48ad-9fa1-6a674f91b91d" />
+
 
 
 
